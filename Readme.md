@@ -125,4 +125,41 @@
   ```
 
 - 添加prometheus数据源
+
 - 添加dashboard
+
+- 配置文件地址
+
+  ```
+  /usr/share/grafana/conf/defaults.ini
+  ```
+
+- 文件挂载
+
+  ```
+  docker run -d --name=grafana -p 3000:3000 -v C:/Users/Galiluck/Desktop/prometheus/defaults.ini:/usr/share/grafana/conf/defaults.ini grafana/grafana
+  ```
+
+  
+
+### Jenkins使用
+
+- 下载Docker拉取Jenkins镜像
+
+  ```
+  docker pull jenkins/jenkins
+  ```
+
+- 启动Jenkins服务
+
+  ```
+  docker run -d -p 3001:3001 -v ./jenkins:/var/jenkins_home  --name jenkins docker.io/jenkins/jenkins
+  ```
+
+  
+
+### Swagger工具
+
+1. 配置springfox-swagger2、springfox-swagger-ui
+2. 使用注解
+3. 访问/swagger-ui.html
