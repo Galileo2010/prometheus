@@ -1,4 +1,4 @@
-package com.test.prometheus.Config;
+package com.test.prometheus;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,9 +26,8 @@ public class SwaggerConfig{
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Spring Boot中使用Swagger2构建RESTful APIs")
-                .description("更多请关注http://www.baidu.com")
-                .termsOfServiceUrl("http://localhost:8080/prometheus/swagger-ui.html")
-                .contact("api")
+                .description("更多请致电TEL:15549070600")
+                .termsOfServiceUrl("")
                 .version("1.0")
                 .build();
     }

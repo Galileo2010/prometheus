@@ -140,6 +140,16 @@
   docker run -d --name=grafana -p 3000:3000 -v C:/Users/Galiluck/Desktop/prometheus/defaults.ini:/usr/share/grafana/conf/defaults.ini grafana/grafana
   ```
 
+- 匿名登录
+
+  ```
+  GF_AUTH_PROXY_ENABLED: true
+  
+  GF_AUTH_ANONYMOUS_ENABLED: true
+  
+  docker run -d -p 3000:3000 --name=grafana -e "GF_AUTH_PROXY_ENABLED=true" -e "GF_AUTH_ANONYMOUS_ENABLED=true" grafana/grafana
+  ```
+
   
 
 ### Jenkins使用
@@ -161,5 +171,36 @@
 ### Swagger工具
 
 1. 配置springfox-swagger2、springfox-swagger-ui
-2. 使用注解
-3. 访问/swagger-ui.html
+
+2. 开启服务，放在application文件同目录下
+
+   ```
+   @Configuration
+   @EnableSwagger2
+   public class SwaggerConfig{
+       @Bean
+       public Docket createRestApi() {
+           return new Docket(DocumentationType.SWAGGER_2)
+                   .apiInfo(apiInfo())
+                   .select()
+                   .apis(RequestHandlerSelectors.basePackage("com.test.prometheus"))
+                   .paths(PathSelectors.any())
+                   .build();
+       }
+   
+       private ApiInfo apiInfo() {
+           return new ApiInfoBuilder()
+                   .title("Spring Boot中使用Swagger2构建RESTful APIs")
+                   .description("更多请致电TEL:15549070600")
+                   .termsOfServiceUrl("")
+                   .version("1.0")
+                   .build();
+       }
+   }
+   ```
+
+   
+
+3. 使用注解
+
+4. 访问/swagger-ui.html
