@@ -25,10 +25,14 @@ public class MyController {
             if(tmp == 0){
                 int y = (x/b) / (x%b);
                 if (y >= 1 && y <= a)
+                {
+                    getRequestCounter.Increment();
                     sum += x;
+                    sum %= 1000000007;
+                }
             }
         }
-//        getRequestCounter.Increment();
-        return sum % 1000000007;
+        getRequestCounter.setValue(sum);
+        return sum;
     }
 }

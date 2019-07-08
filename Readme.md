@@ -143,13 +143,15 @@
 - 匿名登录
 
   ```
+  参考：https://grafana.com/docs/installation/configuration/
   GF_AUTH_PROXY_ENABLED: true
   
   GF_AUTH_ANONYMOUS_ENABLED: true
+  GF_SECURITY_ALLOW_EMBEDDING: true
   
-  docker run -d -p 3000:3000 --name=grafana -e "GF_AUTH_PROXY_ENABLED=true" -e "GF_AUTH_ANONYMOUS_ENABLED=true" grafana/grafana
+docker run -d -p 3000:3000 --name=grafana -e "GF_AUTH_PROXY_ENABLED=true" -e "GF_AUTH_ANONYMOUS_ENABLED=true" -e "GF_SECURITY_ALLOW_EMBEDDING=true" grafana/grafana
   ```
-
+  
   
 
 ### Jenkins使用
